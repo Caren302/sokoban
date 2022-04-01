@@ -22,7 +22,7 @@ class Mi_primer_juego:
   mapa = [
         [3,3,3,3,3,3,3,3],
         [3,1,1,1,1,1,1,3],
-        [3,1,1,0,4,1,1,3],
+        [3,1,1,1,2,0,1,3],
         [3,1,1,1,1,1,1,3],
         [3,3,3,3,3,3,3,3]
       ]#Define el mapa de juego
@@ -49,15 +49,23 @@ class Mi_primer_juego:
         print()
       print() #Imprime una linea vacia
       #mover
-  def moverDerecha(self): #muneco,espacio [0,1] -> [1.0]
+  def moverDerecha(self): #muneco,espacio [0,1] -> [1,0]
     if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==1:
         self.mapa[self.muneco_fila,self.muneco_columna]=1
         self.mapa[self.muneco_fila,self.muneco_columna+1]=0
         self.muneco_columna+=1
+        
     #muneco,meta [0,4] -> [1,5] 
     elif self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==4:
         self.mapa[self.muneco_fila,self.muneco_columna]=1
         self.mapa[self.muneco_fila,self.muneco_columna+1]=5
+        self.muneco_columna+=1
+
+            #muneco,caja,espacio [0,2,1] -> [1,0,2] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==2 and self.mapa[self.muneco_fila,self.muneco_columna+2]==1 :
+        self.mapa[self.muneco_fila,self.muneco_columna]=1
+        self.mapa[self.muneco_fila,self.muneco_columna+1]=0
+        self.mapa[self.muneco_fila,self.muneco_columna+2]=2
         self.muneco_columna+=1
 
   def moverIzquierda(self):
@@ -65,6 +73,19 @@ class Mi_primer_juego:
     if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==1:
         self.mapa[self.muneco_fila,self.muneco_columna]=1
         self.mapa[self.muneco_fila,self.muneco_columna-1]=0
+        self.muneco_columna-=1
+
+    #muneco,meta [1,5] -> [0,5] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=1
+        self.mapa[self.muneco_fila,self.muneco_columna-1]=5
+        self.muneco_columna-=1
+
+            #muneco,caja,espacio [0,2,1] -> [1,0,2] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==2 and self.mapa[self.muneco_fila,self.muneco_columna-2]==1 :
+        self.mapa[self.muneco_fila,self.muneco_columna]=1
+        self.mapa[self.muneco_fila,self.muneco_columna-1]=0
+        self.mapa[self.muneco_fila,self.muneco_columna-2]=2
         self.muneco_columna-=1
     
                    
