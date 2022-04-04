@@ -10,7 +10,7 @@ class Mi_primer_juego:
     #5-Muneco_meta
     #6-Caja_meta
 
-    #Controles
+    #Controladores
     #a-Izquierda 
     #d-Derecha
     #w-Arriba
@@ -22,8 +22,8 @@ class Mi_primer_juego:
         [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-        [3,1,1,1,1,1,4,4,4,2,0,1,1,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+        [3,1,1,1,1,0,1,1,1,1,1,1,1,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
         [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
       ]#Define el mapa de juego
@@ -212,19 +212,39 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila,self.muneco_columna-1]=5
         self.mapa[self.muneco_fila,self.muneco_columna-2]=6
         self.muneco_columna-=1
+
+  def moverArriba(self):
+    #29 muneco,espacio [1,0] -> [0,1]
+    if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila-1,self.muneco_columna]==1:
+        self.mapa[self.muneco_fila,self.muneco_columna]=1
+        self.mapa[self.muneco_fila-1,self.muneco_columna]=0
+        self.muneco_fila-=1
+
+  def moverAbajo(self):
+    #41 muneco,espacio [1,0] -> [0,1]
+    if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila+1,self.muneco_columna]==1:
+        self.mapa[self.muneco_fila,self.muneco_columna]=1
+        self.mapa[self.muneco_fila+1,self.muneco_columna]=0
+        self.muneco_fila+=1
                    
 juego = Mi_primer_juego()#Crea un objeto para jugar
 juego.imprimirMapa()#Imprime el mapa
 
 while True: #Bucle para jugar N veces
-    instrucciones = "d-Derecha\na-Izquierda\nq-Salir" #instrucciones de juego
+    instrucciones = "d-Derecha\na-Izquierda\nw-Arriba\ns-Abajo\nq-Salir" #instrucciones de juego
     print(instrucciones) #Imprime las intrucciones del juego
-    movimientos = input("mover a: ") #Lee el movimiento del muñco
+    movimientos = input("Mover a: ") #Lee el movimiento del muñco
     if movimientos == "d": #Si es d - mover a la derecha
         juego.moverDerecha() #Mueve el muñeco a la derecha
         juego.imprimirMapa() #Imprime el mapa
     elif movimientos == "a": #Si es a - mover a la izquierda
         juego.moverIzquierda() #Mueve el muñeco a la izquierda
+        juego.imprimirMapa() #Imprime el mapa
+    elif movimientos == "w": #Si es w - mover hacia arriba
+        juego.moverArriba() #Mueve el muñeco hacia arriba
+        juego.imprimirMapa() #Imprime el mapa
+    elif movimientos == "s": #Si es s - mover hacia abajo
+        juego.moverAbajo() #Mueve el muñeco hacia abajo
         juego.imprimirMapa() #Imprime el mapa
     elif movimientos == "q": #Si es q-salir
         print("Saliste del juego") #Imprime mensaje de salida
