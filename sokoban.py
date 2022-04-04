@@ -1,5 +1,6 @@
 import numpy as np
 class Mi_primer_juego:
+    
     #Representación de componentes de juego
     #0-Muñeco    
     #1-Espacio 
@@ -17,16 +18,16 @@ class Mi_primer_juego:
     #q-Salir
     #mapa = [3,1,1,1,0,1,1,1,3]#Define el mapa de juego
 
-  mapa = [
+  mapa =[
         [3,3,3,3,3,3,3,3],
         [3,1,1,1,1,1,1,3],
-        [3,1,1,2,4,0,1,3],
+        [3,1,4,2,4,0,1,3],
         [3,1,1,1,1,1,1,3],
         [3,3,3,3,3,3,3,3]
       ]#Define el mapa de juego
   mapa = np.array(mapa)
   result = np.where(mapa == 0)
-  muneco_fila=result[0]
+  muneco_fila=result[0] 
   muneco_columna=result[1] #estas lineas muestran que simbolo son
 
   def __init__(self): #Pone en modo privdo el comando
@@ -107,6 +108,13 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila,self.muneco_columna+1]=0
         self.mapa[self.muneco_fila,self.muneco_columna+2]=2
         self.muneco_columna+=1
+
+    #14 muneco_meta,caja,meta [5,2,4] -> [4,0,6] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==2 and self.mapa[self.muneco_fila,self.muneco_columna+2]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila,self.muneco_columna+1]=0
+        self.mapa[self.muneco_fila,self.muneco_columna+2]=6
+        self.muneco_columna+=1
         
   def moverIzquierda(self):
     #17 muneco,espacio [1,0] -> [0,1]
@@ -166,6 +174,13 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila,self.muneco_columna]=4
         self.mapa[self.muneco_fila,self.muneco_columna-1]=0
         self.mapa[self.muneco_fila,self.muneco_columna-2]=2
+        self.muneco_columna-=1
+
+    #26 muneco_meta,caja,meta [5,2,4] -> [4,0,6] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==2 and self.mapa[self.muneco_fila,self.muneco_columna-2]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila,self.muneco_columna-1]=0
+        self.mapa[self.muneco_fila,self.muneco_columna-2]=6
         self.muneco_columna-=1
                    
 juego = Mi_primer_juego()#Crea un objeto para jugar
