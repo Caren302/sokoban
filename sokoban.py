@@ -20,7 +20,7 @@ class Mi_primer_juego:
   mapa = [
         [3,3,3,3,3,3,3,3],
         [3,1,1,1,1,1,1,3],
-        [3,1,0,4,1,1,1,3],
+        [3,1,0,4,4,1,1,3],
         [3,1,1,1,1,1,1,3],
         [3,3,3,3,3,3,3,3]
       ]#Define el mapa de juego
@@ -92,6 +92,12 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila,self.muneco_columna]=4
         self.mapa[self.muneco_fila,self.muneco_columna+1]=0
         self.muneco_columna+=1
+
+    #12 muneco_meta,meta [5,4] -> [4,5] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila,self.muneco_columna+1]=5
+        self.muneco_columna+=1
         
   def moverIzquierda(self):
     #17 muneco,espacio [1,0] -> [0,1]
@@ -134,10 +140,16 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila,self.muneco_columna-2]=6
         self.muneco_columna-=1
         
-    #11 muneco_meta,espacio [5,1] -> [4,0] 
+    #23 muneco_meta,espacio [5,1] -> [4,0] 
     elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==1:
         self.mapa[self.muneco_fila,self.muneco_columna]=4
         self.mapa[self.muneco_fila,self.muneco_columna-1]=0
+        self.muneco_columna-=1
+
+    #24 muneco_meta,meta [5,4] -> [4,5] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila,self.muneco_columna-1]=5
         self.muneco_columna-=1
                    
 juego = Mi_primer_juego()#Crea un objeto para jugar
