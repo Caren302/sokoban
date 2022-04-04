@@ -1,0 +1,20 @@
+[[package]]
+name = "emoji"
+version = "1.7.0"
+description = "Emoji for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+dev = ["pytest", "coverage", "coveralls"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "d781c50e797426d58b93cde0a187c8493b85c40e01370fcc7295d3d79a17afcf"
+
+[metadata.files]
+emoji = [
+    {file = "emoji-1.7.0.tar.gz", hash = "sha256:65c54533ea3c78f30d0729288998715f418d7467de89ec258a31c0ce8660a1d1"},
+]

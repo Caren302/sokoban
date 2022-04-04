@@ -20,7 +20,7 @@ class Mi_primer_juego:
   mapa = [
         [3,3,3,3,3,3,3,3],
         [3,1,1,1,1,1,1,3],
-        [3,1,0,4,4,1,1,3],
+        [3,1,1,2,4,0,1,3],
         [3,1,1,1,1,1,1,3],
         [3,3,3,3,3,3,3,3]
       ]#Define el mapa de juego
@@ -28,7 +28,7 @@ class Mi_primer_juego:
   result = np.where(mapa == 0)
   muneco_fila=result[0]
   muneco_columna=result[1] #estas lineas muestran que simbolo son
-    
+
   def __init__(self): #Pone en modo privdo el comando
     pass #Permite seguir corriendo nuestro comando
       
@@ -47,6 +47,8 @@ class Mi_primer_juego:
         print()
       print() #Imprime una linea vacia
       #mover
+      
+
   def moverDerecha(self): #5 muneco,espacio [0,1] -> [1,0]
     if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==1:
         self.mapa[self.muneco_fila,self.muneco_columna]=1
@@ -97,6 +99,13 @@ class Mi_primer_juego:
     elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==4:
         self.mapa[self.muneco_fila,self.muneco_columna]=4
         self.mapa[self.muneco_fila,self.muneco_columna+1]=5
+        self.muneco_columna+=1
+
+    #13 muneco_meta,caja,espacio [5,2,1] -> [4,0,2] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna+1]==2 and self.mapa[self.muneco_fila,self.muneco_columna+2]==1:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila,self.muneco_columna+1]=0
+        self.mapa[self.muneco_fila,self.muneco_columna+2]=2
         self.muneco_columna+=1
         
   def moverIzquierda(self):
@@ -150,6 +159,13 @@ class Mi_primer_juego:
     elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==4:
         self.mapa[self.muneco_fila,self.muneco_columna]=4
         self.mapa[self.muneco_fila,self.muneco_columna-1]=5
+        self.muneco_columna-=1
+
+    #25 muneco_meta,caja,espacio [5,2,1] -> [4,0,2] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila,self.muneco_columna-1]==2 and self.mapa[self.muneco_fila,self.muneco_columna-2]==1:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila,self.muneco_columna-1]=0
+        self.mapa[self.muneco_fila,self.muneco_columna-2]=2
         self.muneco_columna-=1
                    
 juego = Mi_primer_juego()#Crea un objeto para jugar
