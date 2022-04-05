@@ -21,10 +21,12 @@ class Mi_primer_juego:
   mapa =[
         [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-        [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+        [3,1,1,1,1,4,1,1,1,1,1,1,1,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
         [3,1,1,1,1,0,1,1,1,1,1,1,1,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+        [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+        [3,1,1,1,1,4,1,1,1,1,1,1,1,3],
         [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
       ]#Define el mapa de juego
   mapa = np.array(mapa)
@@ -36,7 +38,7 @@ class Mi_primer_juego:
     pass #Permite seguir corriendo nuestro comando
       
   def imprimirMapa(self): #Metodo para imprimir el mapa
-      for j in range(7):#Recorre cada caracterer del juego
+      for j in range(9):#Recorre cada caracterer del juego
         for i in range(14):
           if self.mapa[j][i] == 1:#Si encuentra un numero 1 -  espacio
             #for a in range(len(self.mapa[0])):
@@ -220,11 +222,23 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila-1,self.muneco_columna]=0
         self.muneco_fila-=1
 
+    #30 muneco,meta [0,4] -> [1,5] 
+    if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila-1,self.muneco_columna]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=1
+        self.mapa[self.muneco_fila-1,self.muneco_columna]=5
+        self.muneco_fila-=1
+
   def moverAbajo(self):
     #41 muneco,espacio [1,0] -> [0,1]
     if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila+1,self.muneco_columna]==1:
         self.mapa[self.muneco_fila,self.muneco_columna]=1
         self.mapa[self.muneco_fila+1,self.muneco_columna]=0
+        self.muneco_fila+=1
+
+    #42 muneco,meta [0,4] -> [1,5] 
+    if self.mapa[self.muneco_fila,self.muneco_columna]== 0 and  self.mapa[self.muneco_fila+1,self.muneco_columna]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=1
+        self.mapa[self.muneco_fila+1,self.muneco_columna]=5
         self.muneco_fila+=1
                    
 juego = Mi_primer_juego()#Crea un objeto para jugar
