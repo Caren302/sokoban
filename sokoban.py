@@ -21,11 +21,11 @@ class Mi_primer_juego:
   mapa =[
         [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-        [3,1,1,1,1,1,0,1,1,1,1,1,1,3],
+        [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
         [3,1,1,1,1,1,4,1,1,2,1,1,1,3],
+        [3,1,1,1,1,1,4,1,1,1,1,1,1,3],
         [3,1,1,1,1,1,2,1,1,1,1,1,1,3],
-        [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-        [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+        [3,1,1,1,1,1,0,1,1,1,1,1,1,3],
         [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
         [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
       ]#Define el mapa de juego
@@ -274,6 +274,13 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila-1,self.muneco_columna]=0
         self.mapa[self.muneco_fila-2,self.muneco_columna]=2
         self.muneco_fila-=1
+
+    #38 muneco_meta,caja,meta [5,2,4] -> [4,0,6] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila-1,self.muneco_columna]==2 and self.mapa[self.muneco_fila-2,self.muneco_columna]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila-1,self.muneco_columna]=0
+        self.mapa[self.muneco_fila-2,self.muneco_columna]=6
+        self.muneco_fila-=1
         
   def moverAbajo(self):
     #41 muneco,espacio [1,0] -> [0,1]
@@ -333,6 +340,13 @@ class Mi_primer_juego:
         self.mapa[self.muneco_fila,self.muneco_columna]=4
         self.mapa[self.muneco_fila+1,self.muneco_columna]=0
         self.mapa[self.muneco_fila+2,self.muneco_columna]=2
+        self.muneco_fila+=1
+
+    #50 muneco_meta,caja,meta [5,2,4] -> [4,0,6] 
+    elif self.mapa[self.muneco_fila,self.muneco_columna]==5 and  self.mapa[self.muneco_fila+1,self.muneco_columna]==2 and self.mapa[self.muneco_fila+2,self.muneco_columna]==4:
+        self.mapa[self.muneco_fila,self.muneco_columna]=4
+        self.mapa[self.muneco_fila+1,self.muneco_columna]=0
+        self.mapa[self.muneco_fila+2,self.muneco_columna]=6
         self.muneco_fila+=1
                    
 juego = Mi_primer_juego()#Crea un objeto para jugar
